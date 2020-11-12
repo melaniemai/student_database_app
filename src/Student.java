@@ -6,7 +6,7 @@ public class Student {
     private String lastName;
     private int gradeYear;
     private String studentID;
-    private String courses;
+    private String courses = " ";
     private int tuition;
     private static int courseCost = 500; // default price
     private static int id = 10000;
@@ -29,8 +29,6 @@ public class Student {
         this.gradeYear = in.nextInt();
 
         setStudentID();
-        System.out.println("Welcome " + firstName + " " + lastName + ": " + gradeYear);
-        System.out.println("Student ID: " + studentID);
 
     }
 
@@ -44,27 +42,40 @@ public class Student {
     // Enroll in courses
     public void enroll() {
         // * User will continue to enroll in courses through a loop
-        // * Once the user enters the number '0', the loop will terminate
+        // * Once the user enters the string "Q", the loop will terminate
         // * indicating the user is done enrolling in their courses
         do {
-            System.out.print("Enter course to enroll (0 to quit): ");
+            System.out.print("Enter course to enroll (Q to quit): ");
             Scanner in = new Scanner(System.in);
             String crs = in.nextLine();
             if (!crs.equals("Q")) {
-                courses = crs + "\n" + courses;
+                courses = courses + "\n  " + crs;
                 tuition += courseCost;
             } else {
                 break;
             }
         } while (1 != 0);
-
-        System.out.println("Enrolled in: " + courses);
-        System.out.println("Tuition Balance: $" + tuition);
     }
 
     // View student's balance
+    public void viewBalance() {
+        System.out.println("TUITION TOTAL: $" + tuition);
+    }
 
     // Pay student tuition
+    public void payTuition() {
+        viewBalance();
+        System.out.print("Enter tuition payment amount: $");
+        Scanner in = new Scanner(System.in);
+        int payment = in.nextInt();
+        tuition -= payment;
+        System.out.println("Thank you. Your payment of $" + payment + " was successfully made.");
+        viewBalance();
+    }
 
     // Display student stats/info: name, ID, enrolled courses, and balance
+    public String showInfo() {
+        return "\nName: " + firstName + " " + lastName + "\nStudent ID: " + studentID + "\nGrade Year: " + gradeYear
+                + "\nCourses Enrolled: " + courses + "\nBalance: $" + tuition;
+    }
 }
