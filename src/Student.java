@@ -46,7 +46,20 @@ public class Student {
         // * User will continue to enroll in courses through a loop
         // * Once the user enters the number '0', the loop will terminate
         // * indicating the user is done enrolling in their courses
-        System.out.print("Enter course to enroll (0 to quit): ");
+        do {
+            System.out.print("Enter course to enroll (0 to quit): ");
+            Scanner in = new Scanner(System.in);
+            String crs = in.nextLine();
+            if (!crs.equals("Q")) {
+                courses = crs + "\n" + courses;
+                tuition += courseCost;
+            } else {
+                break;
+            }
+        } while (1 != 0);
+
+        System.out.println("Enrolled in: " + courses);
+        System.out.println("Tuition Balance: $" + tuition);
     }
 
     // View student's balance
