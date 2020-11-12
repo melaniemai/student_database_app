@@ -15,6 +15,7 @@ The user will then be able to input various classes the student is enrolling in.
 Each course is worth \$500. The user will be able to view the total tuition cost based on the amount of courses they are enrolling in once they are finished enrolling. Once the total tuition cost is determined, the student will then be able to input the amount of money they would like to pay towards their tuition.
 <br><br>
 **LEARNING: OOP**
+<br>
 The student database application was constructed to better understand the concepts of:
 
 - arrays
